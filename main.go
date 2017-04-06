@@ -35,3 +35,7 @@ func returnTech(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 }
+
+func readFile(filename string) {
+
+}
