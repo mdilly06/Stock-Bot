@@ -46,7 +46,7 @@ func returnTech(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if user.ID == botID || user.Bot {
 		return
 	}
-	content := m.Content
+	content := strings.ToLower(m.Content)
 	if len(content) <= len("-") {
 		return
 	}
@@ -65,14 +65,14 @@ func returnTech(s *discordgo.Session, m *discordgo.MessageCreate) {
 		line := strings.Split(content, " ")
 		sheet := xlsxFile.Sheets[0]
 		row := sheet.AddRow()
-		for i := 0; i < 12; i++ {
+		for i := 0; i < 15; i++ {
 			row.AddCell()
 		}
 		row.Cells[0].SetString(user.Username)
 		row.Cells[1].SetString("=NOW()")
-		row.Cells[2].SetString(line[1])
+		row.Cells[2].SetString(strings.ToUpper(line[1]))
 		row.Cells[3].SetString(line[2])
-		row.Cells[3].SetString(line[3])
+		row.Cells[4].SetString(line[3])
 	}
 	if strings.HasPrefix(content, "-out") {
 		line := strings.Split(content, " ")
@@ -80,6 +80,7 @@ func returnTech(s *discordgo.Session, m *discordgo.MessageCreate) {
 		for _, row := range sheet.Rows {
 			if row.Cells[0].Value == user.Username && row.Cells[2].Value == line[1] {
 				row.Cells[10].SetString("=NOW()")
+				row.Cells[11].SetString(line[2])
 			}
 		}
 	}
@@ -93,7 +94,7 @@ func printHelp() {
 	fmt.Println("For example, if you started a position in 10 shares of AAPL at $100 per share, you would enter:")
 	fmt.Println("\t\"-in AAPL 10 100\"")
 	fmt.Println("To have Nixeus record the exiting of your position, use the following format:")
-	fmt.Println("\t\"-out [ticker name] [amount of shares] [price]\"")
-	fmt.Println("For example, if you exited a position of 10 shares of AAPL at $150 per share, you would enter:")
-	fmt.Println("\t\"-out AAPL 10 150\"")
+	fmt.Println("\t\"-out [ticker name] [price]\"")
+	fmt.Println("For example, if you exited your AAPL at $150 per share, you would enter:")
+	fmt.Println("\t\"-out AAPL 150\"")
 }
