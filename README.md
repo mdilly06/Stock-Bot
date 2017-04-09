@@ -1,6 +1,4 @@
 # Nixeus_Discord_Bot
-Discord bot that keeps track of your current stock positions
-
 Nixeus records and keeps track of your active positions
 
 To have Nixeus start recording your position, use the following format:
