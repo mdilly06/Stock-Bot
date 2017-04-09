@@ -21,6 +21,10 @@ For example, if you exited a position of 10 shares of AAPL on May 21st, 2016, yo
         
 For shorthand, if you would like to use todays date for the [date], use the keyword "today"
 
-An example: "-in F 500 today" would start recording a position of 500 shares in F on the currrent date.
+An example: 
+
+       -in F 500 today
+       
+Would start recording a position of 500 shares in F on the currrent date.
 
 Note that the "today" keyword can be used for both entering (-in) and exiting (-out) positions.
