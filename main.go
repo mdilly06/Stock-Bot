@@ -57,8 +57,8 @@ func returnTech(s *discordgo.Session, m *discordgo.MessageCreate) {
 	array := strings.Fields(content)
 	if strings.HasPrefix(content, "-nixeus") {
 		if array[1] == "chart" {
-			// URL : https://chart.finance.yahoo.com/z?s=AAPL&t=6m&q=c&l=off&z=l&p=m50,m200,v
-			url := "https://chart.finance.yahoo.com/z?s=" + array[2] + "&t=" + array[3] + "&q=c&l=off&z=l&p=m50,m200,v"
+			// URL : https://chart.finance.yahoo.com/z?s=AAPL&t=6m&q=c&l=off&z=l&p=m50,m200,v&a=m26-12-9,r14
+			url := "https://chart.finance.yahoo.com/z?s=" + array[2] + "&t=" + array[3] + "&q=c&l=off&z=l&p=m50,m200,v&a=m26-12-9,r14"
 			s.ChannelMessageSend(m.ChannelID, url)
 		} else {
 			help(s, m)
